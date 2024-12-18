@@ -1,3 +1,4 @@
 # 제트브레인 설정 파일(.idea) 및 가상환경(.venv)
 *.idea
 *.venv
+*__pycache__
