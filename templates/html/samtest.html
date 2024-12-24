@@ -20,6 +20,7 @@
 
     <!-- Custom styles for this template-->
     <link href="static/css/sb-admin-2.min.css" rel="stylesheet">
+    <link href="static/css/radio_image.css" rel="stylesheet">
 
 </head>
 
@@ -49,23 +50,6 @@
                     <span>Dashboard</span></a>
             </li>
 
-
-<!--
-            <!-- Divider
-            <<hr class="sidebar-divider d-none d-md-block">
-
-            <!-- Sidebar Toggler (Sidebar)
-            <div class="text-center d-none d-md-inline">
-                <button class="rounded-circle border-0" id="sidebarToggle"></button>
-            </div>
-
-            <!-- Sidebar Message -->
-<!--            <div class="sidebar-card d-none d-lg-flex">-->
-<!--                <img class="sidebar-card-illustration mb-2" src="static/img/undraw_rocket.svg" alt="...">-->
-<!--                <p class="text-center mb-2"><strong>SB Admin Pro</strong> is packed with premium features, components, and more!</p>-->
-<!--                <a class="btn btn-success btn-sm" href="https://startbootstrap.com/theme/sb-admin-pro">Upgrade to Pro!</a>-->
-<!--            </div>-->
-
         </ul>
         <!-- End of Sidebar -->
 
@@ -83,169 +67,13 @@
                         <i class="fa fa-bars"></i>
                     </button>
 
-                    <!-- Topbar Search -->
-<!--                    <form-->
-<!--                        class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">-->
-<!--                        <div class="input-group">-->
-<!--                            <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..."-->
-<!--                                aria-label="Search" aria-describedby="basic-addon2">-->
-<!--                            <div class="input-group-append">-->
-<!--                                <button class="btn btn-primary" type="button">-->
-<!--                                    <i class="fas fa-search fa-sm"></i>-->
-<!--                                </button>-->
-<!--                            </div>-->
-<!--                        </div>-->
-<!--                    </form>-->
-
                     <!-- Topbar Navbar -->
                     <ul class="navbar-nav ml-auto">
-
-                        <!-- Nav Item - Search Dropdown (Visible Only XS) -->
-<!--                        <li class="nav-item dropdown no-arrow d-sm-none">-->
-<!--                            <a class="nav-link dropdown-toggle" href="#" id="searchDropdown" role="button"-->
-<!--                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">-->
-<!--                                <i class="fas fa-search fa-fw"></i>-->
-<!--                            </a>-->
-<!--                            &lt;!&ndash; Dropdown - Messages &ndash;&gt;-->
-<!--                            <div class="dropdown-menu dropdown-menu-right p-3 shadow animated&#45;&#45;grow-in"-->
-<!--                                aria-labelledby="searchDropdown">-->
-<!--                                <form class="form-inline mr-auto w-100 navbar-search">-->
-<!--                                    <div class="input-group">-->
-<!--                                        <input type="text" class="form-control bg-light border-0 small"-->
-<!--                                            placeholder="Search for..." aria-label="Search"-->
-<!--                                            aria-describedby="basic-addon2">-->
-<!--                                        <div class="input-group-append">-->
-<!--                                            <button class="btn btn-primary" type="button">-->
-<!--                                                <i class="fas fa-search fa-sm"></i>-->
-<!--                                            </button>-->
-<!--                                        </div>-->
-<!--                                    </div>-->
-<!--                                </form>-->
-<!--                            </div>-->
-<!--                        </li>-->
-
-                        <!-- Nav Item - Alerts -->
-<!--                        <li class="nav-item dropdown no-arrow mx-1">-->
-<!--                            <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button"-->
-<!--                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">-->
-<!--                                <i class="fas fa-bell fa-fw"></i>-->
-<!--                                &lt;!&ndash; Counter - Alerts &ndash;&gt;-->
-<!--                                <span class="badge badge-danger badge-counter">3+</span>-->
-<!--                            </a>-->
-<!--                            &lt;!&ndash; Dropdown - Alerts &ndash;&gt;-->
-<!--                            <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated&#45;&#45;grow-in"-->
-<!--                                aria-labelledby="alertsDropdown">-->
-<!--                                <h6 class="dropdown-header">-->
-<!--                                    Alerts Center-->
-<!--                                </h6>-->
-<!--                                <a class="dropdown-item d-flex align-items-center" href="#">-->
-<!--                                    <div class="mr-3">-->
-<!--                                        <div class="icon-circle bg-primary">-->
-<!--                                            <i class="fas fa-file-alt text-white"></i>-->
-<!--                                        </div>-->
-<!--                                    </div>-->
-<!--                                    <div>-->
-<!--                                        <div class="small text-gray-500">December 12, 2019</div>-->
-<!--                                        <span class="font-weight-bold">A new monthly report is ready to download!</span>-->
-<!--                                    </div>-->
-<!--                                </a>-->
-<!--                                <a class="dropdown-item d-flex align-items-center" href="#">-->
-<!--                                    <div class="mr-3">-->
-<!--                                        <div class="icon-circle bg-success">-->
-<!--                                            <i class="fas fa-donate text-white"></i>-->
-<!--                                        </div>-->
-<!--                                    </div>-->
-<!--                                    <div>-->
-<!--                                        <div class="small text-gray-500">December 7, 2019</div>-->
-<!--                                        $290.29 has been deposited into your account!-->
-<!--                                    </div>-->
-<!--                                </a>-->
-<!--                                <a class="dropdown-item d-flex align-items-center" href="#">-->
-<!--                                    <div class="mr-3">-->
-<!--                                        <div class="icon-circle bg-warning">-->
-<!--                                            <i class="fas fa-exclamation-triangle text-white"></i>-->
-<!--                                        </div>-->
-<!--                                    </div>-->
-<!--                                    <div>-->
-<!--                                        <div class="small text-gray-500">December 2, 2019</div>-->
-<!--                                        Spending Alert: We've noticed unusually high spending for your account.-->
-<!--                                    </div>-->
-<!--                                </a>-->
-<!--                                <a class="dropdown-item text-center small text-gray-500" href="#">Show All Alerts</a>-->
-<!--                            </div>-->
-<!--                        </li>-->
-
-                        <!-- Nav Item - Messages -->
-<!--                        <li class="nav-item dropdown no-arrow mx-1">-->
-<!--                            <a class="nav-link dropdown-toggle" href="#" id="messagesDropdown" role="button"-->
-<!--                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">-->
-<!--                                <i class="fas fa-envelope fa-fw"></i>-->
-<!--                                &lt;!&ndash; Counter - Messages &ndash;&gt;-->
-<!--                                <span class="badge badge-danger badge-counter">7</span>-->
-<!--                            </a>-->
-<!--                            &lt;!&ndash; Dropdown - Messages &ndash;&gt;-->
-<!--                            <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated&#45;&#45;grow-in"-->
-<!--                                aria-labelledby="messagesDropdown">-->
-<!--                                <h6 class="dropdown-header">-->
-<!--                                    Message Center-->
-<!--                                </h6>-->
-<!--                                <a class="dropdown-item d-flex align-items-center" href="#">-->
-<!--                                    <div class="dropdown-list-image mr-3">-->
-<!--                                        <img class="rounded-circle" src="static/img/undraw_profile_1.svg"-->
-<!--                                            alt="...">-->
-<!--                                        <div class="status-indicator bg-success"></div>-->
-<!--                                    </div>-->
-<!--                                    <div class="font-weight-bold">-->
-<!--                                        <div class="text-truncate">Hi there! I am wondering if you can help me with a-->
-<!--                                            problem I've been having.</div>-->
-<!--                                        <div class="small text-gray-500">Emily Fowler · 58m</div>-->
-<!--                                    </div>-->
-<!--                                </a>-->
-<!--                                <a class="dropdown-item d-flex align-items-center" href="#">-->
-<!--                                    <div class="dropdown-list-image mr-3">-->
-<!--                                        <img class="rounded-circle" src="static/img/undraw_profile_2.svg"-->
-<!--                                            alt="...">-->
-<!--                                        <div class="status-indicator"></div>-->
-<!--                                    </div>-->
-<!--                                    <div>-->
-<!--                                        <div class="text-truncate">I have the photos that you ordered last month, how-->
-<!--                                            would you like them sent to you?</div>-->
-<!--                                        <div class="small text-gray-500">Jae Chun · 1d</div>-->
-<!--                                    </div>-->
-<!--                                </a>-->
-<!--                                <a class="dropdown-item d-flex align-items-center" href="#">-->
-<!--                                    <div class="dropdown-list-image mr-3">-->
-<!--                                        <img class="rounded-circle" src="static/img/undraw_profile_3.svg"-->
-<!--                                            alt="...">-->
-<!--                                        <div class="status-indicator bg-warning"></div>-->
-<!--                                    </div>-->
-<!--                                    <div>-->
-<!--                                        <div class="text-truncate">Last month's report looks great, I am very happy with-->
-<!--                                            the progress so far, keep up the good work!</div>-->
-<!--                                        <div class="small text-gray-500">Morgan Alvarez · 2d</div>-->
-<!--                                    </div>-->
-<!--                                </a>-->
-<!--                                <a class="dropdown-item d-flex align-items-center" href="#">-->
-<!--                                    <div class="dropdown-list-image mr-3">-->
-<!--                                        <img class="rounded-circle" src="https://source.unsplash.com/Mv9hjnEUHR4/60x60"-->
-<!--                                            alt="...">-->
-<!--                                        <div class="status-indicator bg-success"></div>-->
-<!--                                    </div>-->
-<!--                                    <div>-->
-<!--                                        <div class="text-truncate">Am I a good boy? The reason I ask is because someone-->
-<!--                                            told me that people say this to all dogs, even if they aren't good...</div>-->
-<!--                                        <div class="small text-gray-500">Chicken the Dog · 2w</div>-->
-<!--                                    </div>-->
-<!--                                </a>-->
-<!--                                <a class="dropdown-item text-center small text-gray-500" href="#">Read More Messages</a>-->
-<!--                            </div>-->
-<!--                        </li>-->
-
                         <div class="topbar-divider d-none d-sm-block"></div>
 
                         <!-- Nav Item - User Information -->
                         <li class="nav-item dropdown no-arrow">
-                            {% if username == None %}
+                            {% if session['username'] == None %}
                                 <a class="nav-link dropdown-toggle" href="{{url_for('signin')}}" id="userDropdown" role="button"
                                     data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     <span class="mr-2 d-none d-lg-inline text-gray-600 small" >Sign Up</span>
@@ -253,7 +81,7 @@
                             {% else %}
                                 <a class="nav-link dropdown-toggle" id="userDropdown" role="button"
                                     data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    <span class="mr-2 d-none d-lg-inline text-gray-600 small" >{{ username }}님</span>
+                                    <span class="mr-2 d-none d-lg-inline text-gray-600 small" >{{ session['username'] }}님</span>
                                 </a>
                             {% endif %}
                             <!-- Dropdown - User Information -->
@@ -278,34 +106,340 @@
                                 </a>
                             </div>
                         </li>
-
                     </ul>
-
                 </nav>
                 <!-- End of Topbar -->
 
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
-                    {{ path[count][0] }}
                     <!-- Page Heading -->
                     <h1 class="h3 mb-4 text-gray-800">Blank Page</h1>
-                        <video width="320" height="240" src="{{ url_for('static', filename=path[count][0]) }}" controls></video>
+                    <div class="d-flex justify-content-center text-center">
+                        <h1>{{ session['success_len'] }} / 108</h1>
+                        <video width="320" height="240" src="{{ url_for('static', filename=session['video_path'][session['video_count']]) }}" controls></video>
+                    </div>
                 </div>
-                    <form action="/samtest" method="post">
-                        <input type="number" name='count' value="{{ count }}" class="input"></input>
-                        <input type="text" name='path' value="{{ path }}" class="input-text"></input>
-                                <input type="submit" value="다음으로" class="btn btn-primary btn-user btn-block">
-                            </form>
+            <br>
+
+            <form action="/samtest" method="post">
+                <h1 class="text-black text-center">Valence</h1>
+                <div class="d-flex justify-content-center">
+                    <ul>
+                        <li>
+                            <input type="radio" name="valence" id="cb1" value=1>
+                            <label for="cb1" class="justify-content-center text-center">
+                                <img src="../../static/img/Valence_1.svg" alt="valence1">
+                            </label>
+                        </li>
+                        <li>
+                            <input type="radio" name="valence" id="cb2" value=2>
+                            <label for="cb2" class="justify-content-center text-center">
+                                <img src="../../static/img/empty.svg" alt="valence2">
+                            </label>
+                        </li>
+                        <li>
+                            <input type="radio" name="valence" id="cb3" value=3>
+                            <label for="cb3" class="justify-content-center text-center">
+                                <img src="../../static/img/Valence_2.svg" alt="valence3">
+                            </label>
+                        </li>
+                        <li>
+                            <input type="radio" name="valence" id="cb4" value=4>
+                            <label for="cb4" class="justify-content-center text-center">
+                                <img src="../../static/img/empty.svg" alt="valence4">
+                            </label>
+                        </li>
+                        <li>
+                            <input type="radio" name="valence" id="cb5" value=5>
+                            <label for="cb5" class="justify-content-center text-center">
+                                <img src="../../static/img/Valence_3.svg" alt="valence5">
+                            </label>
+                        </li>
+                        <li>
+                            <input type="radio" name="valence" id="cb6" value=6>
+                            <label for="cb6" class="justify-content-center text-center">
+                                <img src="../../static/img/empty.svg" alt="valence6">
+                            </label>
+                        </li>
+                        <li>
+                            <input type="radio" name="valence" id="cb7" value=7>
+                            <label for="cb7" class="justify-content-center text-center">
+                                <img src="../../static/img/Valence_4.svg" alt="valence7">
+                            </label>
+                        </li>
+                        <li>
+                            <input type="radio" name="valence" id="cb8" value=8>
+                            <label for="cb8" class="justify-content-center text-center">
+                                <img src="../../static/img/empty.svg" alt="valence8">
+                            </label>
+                        </li>
+                        <li>
+                            <input type="radio" name="valence" id="cb9" value=9>
+                            <label for="cb9" class="justify-content-center text-center">
+                                <img src="../../static/img/Valence_5.svg" alt="valence9">
+                            </label>
+                        </li>
+                    </ul>
+                </div>
+                <h1 class="text-black text-center">Arousal</h1>
+                <div class="d-flex justify-content-center">
+                    <ul>
+                        <li>
+                            <input type="radio" name="arousal" id="cb11" value=1>
+                            <label for="cb11" class="justify-content-center text-center">
+                                <img src="../../static/img/Arousal_1.svg" alt="arousal1">
+                            </label>
+                        </li>
+                        <li>
+                            <input type="radio" name="arousal" id="cb12" value=2>
+                            <label for="cb12" class="justify-content-center text-center">
+                                <img src="../../static/img/empty.svg" alt="arousal2">
+                            </label>
+                        </li>
+                        <li>
+                            <input type="radio" name="arousal" id="cb13" value=3>
+                            <label for="cb13" class="justify-content-center text-center">
+                                <img src="../../static/img/Arousal_2.svg" alt="arousal3">
+                            </label>
+                        </li>
+                        <li>
+                            <input type="radio" name="arousal" id="cb14" value=4>
+                            <label for="cb14" class="justify-content-center text-center">
+                                <img src="../../static/img/empty.svg" alt="arousal4">
+                            </label>
+                        </li>
+                        <li>
+                            <input type="radio" name="arousal" id="cb15" value=5>
+                            <label for="cb15" class="justify-content-center text-center">
+                                <img src="../../static/img/Arousal_3.svg" alt="arousal5">
+                            </label>
+                        </li>
+                        <li>
+                            <input type="radio" name="arousal" id="cb16" value=6>
+                            <label for="cb16" class="justify-content-center text-center">
+                                <img src="../../static/img/empty.svg" alt="arousal6">
+                            </label>
+                        </li>
+                        <li>
+                            <input type="radio" name="arousal" id="cb17" value=7>
+                            <label for="cb17" class="justify-content-center text-center">
+                                <img src="../../static/img/Arousal_4.svg" alt="arousal7">
+                            </label>
+                        </li>
+                        <li>
+                            <input type="radio" name="arousal" id="cb18" value=8>
+                            <label for="cb18" class="justify-content-center text-center">
+                                <img src="../../static/img/empty.svg" alt="arousal8">
+                            </label>
+                        </li>
+                        <li>
+                            <input type="radio" name="arousal" id="cb19" value=9>
+                            <label for="cb19" class="justify-content-center text-center">
+                                <img src="../../static/img/Arousal_5.svg" alt="arousal9">
+                            </label>
+                        </li>
+                    </ul>
+                </div>
+                <h1 class="text-black text-center">Dominance</h1>
+                <div class="d-flex justify-content-center">
+                    <ul>
+                        <li>
+                            <input type="radio" name="dominance" id="cb21" value=1>
+                            <label for="cb21" class="justify-content-center text-center">
+                                <img src="../../static/img/Dominance_1.svg" alt="dominance1">
+                            </label>
+                        </li>
+                        <li>
+                            <input type="radio" name="dominance" id="cb22" value=2>
+                            <label for="cb22" class="justify-content-center text-center">
+                                <img src="../../static/img/empty.svg" alt="dominance2">
+                            </label>
+                        </li>
+                        <li>
+                            <input type="radio" name="dominance" id="cb23" value=3>
+                            <label for="cb23" class="justify-content-center text-center">
+                                <img src="../../static/img/Dominance_2.svg" alt="dominance3">
+                            </label>
+                        </li>
+                        <li>
+                            <input type="radio" name="dominance" id="cb24" value=4>
+                            <label for="cb24" class="justify-content-center text-center">
+                                <img src="../../static/img/empty.svg" alt="dominance4">
+                            </label>
+                        </li>
+                        <li>
+                            <input type="radio" name="dominance" id="cb25" value=5>
+                            <label for="cb25" class="justify-content-center text-center">
+                                <img src="../../static/img/Dominance_3.svg" alt="dominance5">
+                            </label>
+                        </li>
+                        <li>
+                            <input type="radio" name="dominance" id="cb26" value=6>
+                            <label for="cb26" class="justify-content-center text-center">
+                                <img src="../../static/img/empty.svg" alt="dominance6">
+                            </label>
+                        </li>
+                        <li>
+                            <input type="radio" name="dominance" id="cb27" value=7>
+                            <label for="cb27" class="justify-content-center text-center">
+                                <img src="../../static/img/Dominance_4.svg" alt="dominance7">
+                            </label>
+                        </li>
+                        <li>
+                            <input type="radio" name="dominance" id="cb28" value=8>
+                            <label for="cb28" class="justify-content-center text-center">
+                                <img src="../../static/img/empty.svg" alt="dominance8">
+
+                            </label>
+                        </li>
+                        <li>
+                            <input type="radio" name="dominance" id="cb29" value=9>
+                            <label for="cb29" class="justify-content-center text-center">
+                                <img src="../../static/img/Dominance_5.svg" alt="dominance9">
+                            </label>
+                        </li>
+                    </ul>
+                </div>
+                <h1 class="text-black text-center">Liking</h1>
+                <div class="d-flex justify-content-center">
+                    <ul>
+                        <li>
+                            <input type="radio" name="liking" id="cb31" value=1>
+                            <label for="cb31" class="justify-content-center text-center">
+                                <img src="../../static/img/Liking.svg" alt="liking1">
+                                <p>완전 좋음</p>
+                                <p></p>
+                            </label>
+                        </li>
+                        <li>
+                            <input type="radio" name="liking" id="cb32" value=2>
+                            <label for="cb32" class="justify-content-center text-center">
+                                <img src="../../static/img/empty.svg" alt="liking2">
+                                <p>좋음</p>
+                            </label>
+                        </li>
+                        <li>
+                            <input type="radio" name="liking" id="cb33" value=3>
+                            <label for="cb33" class="justify-content-center text-center">
+                                <img src="../../static/img/Neutral.svg" alt="liking3">
+                                <p>평범함</p>
+                            </label>
+                        </li>
+                        <li>
+                            <input type="radio" name="liking" id="cb34" value=4>
+                            <label for="cb34" class="justify-content-center text-center">
+                                <img src="../../static/img/empty.svg" alt="liking4">
+                                <p>안좋음</p>
+                            </label>
+                        </li>
+                        <li>
+                            <input type="radio" name="liking" id="cb35" value=5>
+                            <label for="cb35" class="justify-content-center text-center">
+                                <img src="../../static/img/Unliking.svg" alt="liking5">
+                                <p>완전 안좋음</p>
+                            </label>
+                        </li>
+
+                    </ul>
+                </div>
+                 <h1 class="text-black text-center">Familiarity</h1>
+                <div class="d-flex justify-content-center">
+                    <ul>
+                        <li>
+                            <input type="radio" name="familiarity" id="cb41" value=1>
+                            <label for="cb41" class="justify-content-center text-center">
+                                <img src="../../static/img/empty.svg" alt="familiarity1">
+                                <p>매일 봄</p>
+                            </label>
+                        </li>
+                        <li>
+                            <input type="radio" name="familiarity" id="cb42" value=2>
+                            <label for="cb42" class="justify-content-center text-center">
+                                <img src="../../static/img/empty.svg" alt="familiarity2">
+                                <p>자주 봄</p>
+                            </label>
+                        </li>
+                        <li>
+                            <input type="radio" name="familiarity" id="cb43" value=3>
+                            <label for="cb43" class="justify-content-center text-center">
+                                <img src="../../static/img/empty.svg" alt="familiarity3">
+                                <p>적당히 봄</p>
+                            </label>
+                        </li>
+                        <li>
+                            <input type="radio" name="familiarity" id="cb44" value=4>
+                            <label for="cb44" class="justify-content-center text-center">
+                                <img src="../../static/img/empty.svg" alt="familiarity4">
+                                <p>거의 안봄</p>
+                            </label>
+                        </li>
+                        <li>
+                            <input type="radio" name="familiarity" id="cb45" value=5>
+                            <label for="cb45" class="justify-content-center text-center">
+                                <img src="../../static/img/empty.svg" alt="familiarity5">
+                                <p>처음봄</p>
+                            </label>
+                        </li>
+                    </ul>
+                </div>
+                <h1 class="text-black text-center">Emotion</h1>
+                <div class="d-flex justify-content-center">
+                    <ul>
+                        <li>
+                            <input type="radio" name="emotion" id="cb51" value="excited">
+                            <label for="cb51" class="justify-content-center text-center">
+                                <img src="../../static/img/Excited.svg" alt="excited">
+                                <p>Excited</p>
+                            </label>
+                        </li>
+                        <li>
+                            <input type="radio" name="emotion" id="cb52" value="joy">
+                            <label for="cb52" class="justify-content-center text-center">
+                                <img src="../../static/img/Joy.svg" alt="joy">
+                                <p>Joy</p>
+                            </label>
+                        </li>
+                        <li>
+                            <input type="radio" name="emotion" id="cb53" value="calm">
+                            <label for="cb53" class="justify-content-center text-center">
+                                <img src="../../static/img/Calm.svg" alt="calm">
+                                <p>Calm</p>
+                            </label>
+                        </li>
+                        <li>
+                            <input type="radio" name="emotion" id="cb54" value="sad">
+                            <label for="cb54" class="justify-content-center text-center">
+                                <img src="../../static/img/Sad.svg" alt="sad">
+                                <p>Sad</p>
+                            </label>
+                        </li>
+                        <li>
+                            <input type="radio" name="emotion" id="cb55" value="fearful">
+                            <label for="cb55" class="justify-content-center text-center">
+                                <img src="../../static/img/Fearful.svg" alt="fearful">
+                                <p>Fearful</p>
+                            </label>
+                        </li>
+                        <li>
+                            <input type="radio" name="emotion" id="cb56" value="angry">
+                            <label for="cb56" class="justify-content-center text-center">
+                                <img src="../../static/img/Angry.svg" alt="fearful">
+                                <p>Angry</p>
+                            </label>
+                        </li>
+                    </ul>
+                </div>
+                <input type="submit" value="다음으로" class="btn btn-primary btn-user btn-block">
+            </form>
                 <!-- /.container-fluid -->
 
             </div>
             <!-- End of Main Content -->
-
             <!-- Footer -->
             <footer class="sticky-footer bg-white">
                 <div class="container my-auto">
                     <div class="copyright text-center my-auto">
-                        <span>Copyright &copy; Your Website 2020</span>
+                        <span>Copyright &copy; NeuroAI SAM 2024</span>
                     </div>
                 </div>
             </footer>
