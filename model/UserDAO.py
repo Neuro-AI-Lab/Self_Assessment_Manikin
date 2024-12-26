@@ -96,11 +96,14 @@ class UserDAO:
         success_len = len(row_success)
         final_path = []
         final_video_name = []
-        for name in path:
-            final_path.append(name[1])
-            final_video_name.append(name[0])
-        shuffle(final_path)
-        return final_path, final_video_name, success_len
+        shuffle(path)
+        for i in range(len(path)):
+            final_path.append(path[i][1])
+            final_video_name.append(path[i][0])
+
+        print(final_path[0])
+        print(final_video_name[0])
+        return final_path[0], final_video_name[0], success_len
 
     def save_movie_assessment(self, assessment_id, userid, movie_name, valance, arousal, dominance, liking, familiarity, emotion):
         self.connect()

@@ -4,7 +4,7 @@
 *__pycache__
 *security
 static/Video/*
-code/test.py
+test.py
 ### Flask ###
 instance/*
 !instance/.gitignore

@@ -1,6 +1,7 @@
 import flask
 from flask import Flask, render_template, request, flash, session, redirect, url_for
 from flask_mail import Mail
+import ast
 
 import sys
 sys.path.append(sys.path[0]+'/security')
@@ -19,10 +20,15 @@ hash_password = PasswordHash()
 def index():
     usertemp.__init__()
     if 'username' in session:
+        if 'video_path' in session and 'video_count' in session and 'success_len' in session and 'video_name' in session:
+            session.pop('video_name')
+            session.pop('success_len')
+            session.pop('video_path')
+            session.pop('video_count')
         if session['username'] != None:
             dao = UserDAO.UserDAO()
-            _, video_name, _ = dao.get_movie_path_without_success(session['username'])
-            session['success_len'] = len(video_name)
+            _, _, success_len = dao.get_movie_path_without_success(session['username'])
+            session['success_len'] = success_len
     else:
         session['username'] = None
     return render_template('html/index.html')
@@ -98,8 +104,8 @@ def samtest():
         session['video_path'] = path
         session['video_count'] = count
         session['success_len'] = success_len
-        if len(session['video_path']) > session['video_count']:
-            return render_template('html/samtest.html', video_check=True)
+        if 108 > session['video_count']:
+            return render_template('html/samtest.html', path=path, video_check=True)
         else:
             flash("평가를 완료 했습니다.")
             return redirect(url_for('index'))
@@ -116,10 +122,14 @@ def samtest():
             return render_template('html/samtest.html', video_check = True)
         if 'video_path' in session and 'video_count' in session and 'success_len' in session and 'video_name' in session:
             dao = UserDAO.UserDAO()
-            assessment_id = session['username'] + '/' + str(session['success_len'])
-            dao.save_movie_assessment(assessment_id, session['username'], session['video_name'][session['video_count']], valance, arousal, dominance, liking, familiarity, emotion)
-            session['success_len']+=1
+            path, video_name, success_len = dao.get_movie_path_without_success(session['username'])
+            assessment_id = session['username'] + '/' + str(success_len)
+            dao.save_movie_assessment(assessment_id, session['username'], session['video_name'], valance, arousal, dominance, liking, familiarity, emotion)
             session['video_count']+=1
+            session['success_len'] = success_len
+            session['video_name'] = video_name
+            session['video_path'] = path
+
         else:
             dao = UserDAO.UserDAO()
             path, video_name, success_len = dao.get_movie_path_without_success(session['username'])
@@ -129,13 +139,9 @@ def samtest():
             session['video_count'] = count
             session['success_len'] = success_len
 
-        if len(session['video_path']) > session['video_count']:
-            print(len(session['video_path']))
-            print(session['video_count'])
+        if 108 > session['video_count']:
             return render_template('html/samtest.html', video_check = True)
         else:
-            print(len(session['video_path']))
-            print(session['video_count'])
             flash("평가를 완료 했습니다.")
             return redirect(url_for('index'))
 
