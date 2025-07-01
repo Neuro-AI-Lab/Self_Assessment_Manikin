@@ -19,6 +19,7 @@
 
     <!-- Custom styles for this template-->
     <link href="static/css/sb-admin-2.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="static/css/register_css.css">
 
 </head>
 
@@ -28,7 +29,7 @@
             <script>
                 alert("{{ message }}")
             </script>
-        {% elif category == 'success' %}
+        {% else %}
             <script>
                 alert("{{ message }}")
             </script>
@@ -52,21 +53,21 @@
                             </div>
                             <form action="/signup" method="post">
                                 <div class="form-group">
-                                    <input type="text" class="form-control form-control-user" name="ID"
+                                    <input type="text" class="form-control form-control-user" id="userID" name="ID"
                                         placeholder="ID를 입력하세요.">
                                 </div>
                                 <div class="form-group row">
                                     <div class="col-sm-6 mb-3 mb-sm-0">
                                         <input type="password" class="form-control form-control-user"
-                                            name="Password" placeholder="Password">
+                                            id="userPassword" name="Password" placeholder="Password">
                                     </div>
                                     <div class="col-sm-6">
                                         <input type="password" class="form-control form-control-user"
-                                            name="RepeatPassword" placeholder="Repeat Password">
+                                            id="RepeatPassword" name="RepeatPassword" placeholder="Repeat Password">
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <input type="text" class="form-control form-control-user" name="Name"
+                                    <input type="text" class="form-control form-control-user" id="userName" name="Name"
                                         placeholder="이름을 입력하세요.">
                                 </div>
                                 <div class="form-group">
@@ -74,13 +75,28 @@
                                         placeholder="이메일을 입력하세요.">
                                 </div>
                                 <div class="form-group">
-                                    <input type="text" class="form-control form-control-user"
-                                           name="Phone" placeholder="010-XXXX-XXXX">
+                                    <div class="d-inline-flex">
+                                        <input type="text" class="form-control form-control-user"
+                                            name="Phone1" placeholder="">-
+                                        <input type="text" class="form-control form-control-user"
+                                            name="Phone2" placeholder="">-
+                                        <input type="text" class="form-control form-control-user"
+                                            name="Phone3" placeholder="">
+                                    </div>
+
                                 </div>
                                 <div class="form-group">
-                                    <input type="number" class="form-control form-control-user"
-                                           name="Age" placeholder="나이를 입력하세요.">
+                                        <select name="Gender" class="form-control form-control-user text-align-right">
+                                            <option value="">성별선택</option>
+                                            <option value="male">남</option>
+                                            <option value="female">여</option>
+                                        </select>
                                 </div>
+                                <div class="form-group">
+                                    <input type="date" class="form-control form-control-user"
+                                           name="Age" placeholder="생년월일을 입력하세요.">
+                                </div>
+
 
                                 <input type="submit" value="Register Account" class="btn btn-primary btn-user btn-block">
                             </form>
@@ -102,7 +118,7 @@
     <!-- Bootstrap core JavaScript-->
     <script src="static/vendor/jquery/jquery.min.js"></script>
     <script src="static/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-
+    <script src="static/js/register_script.js"></script>
     <!-- Core plugin JavaScript-->
     <script src="static/vendor/jquery-easing/jquery.easing.min.js"></script>
 

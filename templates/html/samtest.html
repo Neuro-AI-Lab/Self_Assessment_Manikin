@@ -1,4 +1,7 @@
 <!DOCTYPE html>
+<META HTTP-EQUIV="Cache-Control" CONTENT="no-cache">
+<META HTTP-EQUIV="Pragma" CONTENT="no-cache">
+<META HTTP-EQUIV="Expires" CONTENT="-1">
 <html lang="kr">
 
 <head>
@@ -21,7 +24,6 @@
     <!-- Custom styles for this template-->
     <link href="static/css/sb-admin-2.min.css" rel="stylesheet">
     <link href="static/css/radio_image.css" rel="stylesheet">
-
 </head>
 
 <body id="page-top">
@@ -110,339 +112,413 @@
                 </nav>
                 <!-- End of Topbar -->
             <div class="container-fluid">
-                <div class="justify-content-center text-center">
+                <div class="justify-content-center text-center" style="margin: 4px;padding: 0">
                     <h3>{{ session['success_len'] }}/108</h3>
-                    상태진행바: {{ 1.08 * session['success_len'] }}%
+                    상태진행바: {{ (0.9258 * (session['success_len']+1))|round(2) }}%
                     <div class="progress">
                         <div class="progress-bar" style="width: {{ 1.08 * session['success_len'] }}%" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
                     </div>
+                    <br>
+                    <form id="video-error-reset" action="/samtest" method="post" autocomplete="off">
+                        <input type="submit" value="영상 오류 시 클릭!" class="btn btn-primary btn-user btn-block">
+                    </form>
                 </div>
             </div>
-
-
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
                     <!-- Page Heading -->
                     <div class="d-flex justify-content-center text-center">
-
-                        <h1></h1>
-                        <video width="320" height="240" src="{{ url_for('static', filename=session['video_path']) }}" controls></video>
+                        <video id="video" width="1024" height="720" src="{{ url_for('static', filename=session['video_path']) }}" autoplay></video>
                     </div>
                 </div>
-            <br>
+                <div id="sam-formDiv" style="display: none;">
+                    <form action="/samtest" method="post" autocomplete="off">
+                        <h1 class="text-black text-center">Valence</h1>
+                        <h5 class="text-black text-center">위 영상이 얼마나 긍,부정적인지 선택해주세요.</h5>
+                        <br>
+                        <div class="d-flex justify-content-center">
+                            <ul>
+                                <li>
+                                    <p class="text-center">부정적</p>
+                                    <input type="radio" name="valence" id="cb1" value=1 autocomplete="off">
+                                    <label for="cb1" class="justify-content-center text-center">
+                                        <img src="../../static/img/Valence_1.svg" alt="valence1">
+                                        <p>1</p>
+                                    </label>
+                                </li>
+                                <li>
+                                    <input type="radio" name="valence" id="cb2" value=2 autocomplete="off">
+                                    <label for="cb2" class="justify-content-center text-center">
+                                        <img src="../../static/img/empty.svg" alt="valence2">
+                                        <p>2</p>
+                                    </label>
+                                </li>
+                                <li>
+                                    <input type="radio" name="valence" id="cb3" value=3 autocomplete="off">
+                                    <label for="cb3" class="justify-content-center text-center">
+                                        <img src="../../static/img/Valence_2.svg" alt="valence3">
+                                        <p>3</p>
+                                    </label>
+                                </li>
+                                <li>
+                                    <input type="radio" name="valence" id="cb4" value=4 autocomplete="off">
+                                    <label for="cb4" class="justify-content-center text-center">
+                                        <img src="../../static/img/empty.svg" alt="valence4">
+                                        <p>4</p>
+                                    </label>
+                                </li>
+                                <li>
+                                    <input type="radio" name="valence" id="cb5" value=5 autocomplete="off">
+                                    <label for="cb5" class="justify-content-center text-center">
+                                        <img src="../../static/img/Valence_3.svg" alt="valence5">
+                                        <p>5</p>
+                                    </label>
+                                </li>
+                                <li>
+                                    <input type="radio" name="valence" id="cb6" value=6 autocomplete="off">
+                                    <label for="cb6" class="justify-content-center text-center">
+                                        <img src="../../static/img/empty.svg" alt="valence6">
+                                        <p>6</p>
+                                    </label>
+                                </li>
+                                <li>
+                                    <input type="radio" name="valence" id="cb7" value=7 autocomplete="off">
+                                    <label for="cb7" class="justify-content-center text-center">
+                                        <img src="../../static/img/Valence_4.svg" alt="valence7">
+                                        <p>7</p>
+                                    </label>
+                                </li>
+                                <li>
+                                    <input type="radio" name="valence" id="cb8" value=8 autocomplete="off">
+                                    <label for="cb8" class="justify-content-center text-center">
+                                        <img src="../../static/img/empty.svg" alt="valence8">
+                                        <p>8</p>
+                                    </label>
+                                </li>
+                                <li>
+                                    <p class="text-center">긍정</p>
+                                    <input type="radio" name="valence" id="cb9" value=9 autocomplete="off">
+                                    <label for="cb9" class="justify-content-center text-center">
+                                        <img src="../../static/img/Valence_5.svg" alt="valence9">
+                                        <p>9</p>
 
-            <form action="/samtest" method="post">
-                <h1 class="text-black text-center">Valence</h1>
-                <div class="d-flex justify-content-center">
-                    <ul>
-                        <li>
-                            <input type="radio" name="valence" id="cb1" value=1>
-                            <label for="cb1" class="justify-content-center text-center">
-                                <img src="../../static/img/Valence_1.svg" alt="valence1">
-                            </label>
-                        </li>
-                        <li>
-                            <input type="radio" name="valence" id="cb2" value=2>
-                            <label for="cb2" class="justify-content-center text-center">
-                                <img src="../../static/img/empty.svg" alt="valence2">
-                            </label>
-                        </li>
-                        <li>
-                            <input type="radio" name="valence" id="cb3" value=3>
-                            <label for="cb3" class="justify-content-center text-center">
-                                <img src="../../static/img/Valence_2.svg" alt="valence3">
-                            </label>
-                        </li>
-                        <li>
-                            <input type="radio" name="valence" id="cb4" value=4>
-                            <label for="cb4" class="justify-content-center text-center">
-                                <img src="../../static/img/empty.svg" alt="valence4">
-                            </label>
-                        </li>
-                        <li>
-                            <input type="radio" name="valence" id="cb5" value=5>
-                            <label for="cb5" class="justify-content-center text-center">
-                                <img src="../../static/img/Valence_3.svg" alt="valence5">
-                            </label>
-                        </li>
-                        <li>
-                            <input type="radio" name="valence" id="cb6" value=6>
-                            <label for="cb6" class="justify-content-center text-center">
-                                <img src="../../static/img/empty.svg" alt="valence6">
-                            </label>
-                        </li>
-                        <li>
-                            <input type="radio" name="valence" id="cb7" value=7>
-                            <label for="cb7" class="justify-content-center text-center">
-                                <img src="../../static/img/Valence_4.svg" alt="valence7">
-                            </label>
-                        </li>
-                        <li>
-                            <input type="radio" name="valence" id="cb8" value=8>
-                            <label for="cb8" class="justify-content-center text-center">
-                                <img src="../../static/img/empty.svg" alt="valence8">
-                            </label>
-                        </li>
-                        <li>
-                            <input type="radio" name="valence" id="cb9" value=9>
-                            <label for="cb9" class="justify-content-center text-center">
-                                <img src="../../static/img/Valence_5.svg" alt="valence9">
-                            </label>
-                        </li>
-                    </ul>
-                </div>
-                <h1 class="text-black text-center">Arousal</h1>
-                <div class="d-flex justify-content-center">
-                    <ul>
-                        <li>
-                            <input type="radio" name="arousal" id="cb11" value=1>
-                            <label for="cb11" class="justify-content-center text-center">
-                                <img src="../../static/img/Arousal_1.svg" alt="arousal1">
-                            </label>
-                        </li>
-                        <li>
-                            <input type="radio" name="arousal" id="cb12" value=2>
-                            <label for="cb12" class="justify-content-center text-center">
-                                <img src="../../static/img/empty.svg" alt="arousal2">
-                            </label>
-                        </li>
-                        <li>
-                            <input type="radio" name="arousal" id="cb13" value=3>
-                            <label for="cb13" class="justify-content-center text-center">
-                                <img src="../../static/img/Arousal_2.svg" alt="arousal3">
-                            </label>
-                        </li>
-                        <li>
-                            <input type="radio" name="arousal" id="cb14" value=4>
-                            <label for="cb14" class="justify-content-center text-center">
-                                <img src="../../static/img/empty.svg" alt="arousal4">
-                            </label>
-                        </li>
-                        <li>
-                            <input type="radio" name="arousal" id="cb15" value=5>
-                            <label for="cb15" class="justify-content-center text-center">
-                                <img src="../../static/img/Arousal_3.svg" alt="arousal5">
-                            </label>
-                        </li>
-                        <li>
-                            <input type="radio" name="arousal" id="cb16" value=6>
-                            <label for="cb16" class="justify-content-center text-center">
-                                <img src="../../static/img/empty.svg" alt="arousal6">
-                            </label>
-                        </li>
-                        <li>
-                            <input type="radio" name="arousal" id="cb17" value=7>
-                            <label for="cb17" class="justify-content-center text-center">
-                                <img src="../../static/img/Arousal_4.svg" alt="arousal7">
-                            </label>
-                        </li>
-                        <li>
-                            <input type="radio" name="arousal" id="cb18" value=8>
-                            <label for="cb18" class="justify-content-center text-center">
-                                <img src="../../static/img/empty.svg" alt="arousal8">
-                            </label>
-                        </li>
-                        <li>
-                            <input type="radio" name="arousal" id="cb19" value=9>
-                            <label for="cb19" class="justify-content-center text-center">
-                                <img src="../../static/img/Arousal_5.svg" alt="arousal9">
-                            </label>
-                        </li>
-                    </ul>
-                </div>
-                <h1 class="text-black text-center">Dominance</h1>
-                <div class="d-flex justify-content-center">
-                    <ul>
-                        <li>
-                            <input type="radio" name="dominance" id="cb21" value=1>
-                            <label for="cb21" class="justify-content-center text-center">
-                                <img src="../../static/img/Dominance_1.svg" alt="dominance1">
-                            </label>
-                        </li>
-                        <li>
-                            <input type="radio" name="dominance" id="cb22" value=2>
-                            <label for="cb22" class="justify-content-center text-center">
-                                <img src="../../static/img/empty.svg" alt="dominance2">
-                            </label>
-                        </li>
-                        <li>
-                            <input type="radio" name="dominance" id="cb23" value=3>
-                            <label for="cb23" class="justify-content-center text-center">
-                                <img src="../../static/img/Dominance_2.svg" alt="dominance3">
-                            </label>
-                        </li>
-                        <li>
-                            <input type="radio" name="dominance" id="cb24" value=4>
-                            <label for="cb24" class="justify-content-center text-center">
-                                <img src="../../static/img/empty.svg" alt="dominance4">
-                            </label>
-                        </li>
-                        <li>
-                            <input type="radio" name="dominance" id="cb25" value=5>
-                            <label for="cb25" class="justify-content-center text-center">
-                                <img src="../../static/img/Dominance_3.svg" alt="dominance5">
-                            </label>
-                        </li>
-                        <li>
-                            <input type="radio" name="dominance" id="cb26" value=6>
-                            <label for="cb26" class="justify-content-center text-center">
-                                <img src="../../static/img/empty.svg" alt="dominance6">
-                            </label>
-                        </li>
-                        <li>
-                            <input type="radio" name="dominance" id="cb27" value=7>
-                            <label for="cb27" class="justify-content-center text-center">
-                                <img src="../../static/img/Dominance_4.svg" alt="dominance7">
-                            </label>
-                        </li>
-                        <li>
-                            <input type="radio" name="dominance" id="cb28" value=8>
-                            <label for="cb28" class="justify-content-center text-center">
-                                <img src="../../static/img/empty.svg" alt="dominance8">
+                                    </label>
+                                </li>
+                            </ul>
+                        </div>
+                        <h1 class="text-black text-center">Arousal</h1>
+                        <h5 class="text-black text-center">위 영상을 보고난 후 감정의 각정 정도를 선택해주세요.</h5>
+                        <br>
+                        <div class="d-flex justify-content-center">
+                            <ul>
+                                <li><p class="text-center">차분한 상태</p>
+                                    <input type="radio" name="arousal" id="cb11" value=1 autocomplete="off">
+                                    <label for="cb11" class="justify-content-center text-center">
+                                        <img src="../../static/img/Arousal_1.svg" alt="arousal1">
+                                        <p>1</p>
+                                    </label>
+                                </li>
+                                <li>
+                                    <input type="radio" name="arousal" id="cb12" value=2 autocomplete="off">
+                                    <label for="cb12" class="justify-content-center text-center">
+                                        <img src="../../static/img/empty.svg" alt="arousal2">
+                                        <p>2</p>
+                                    </label>
+                                </li>
+                                <li>
+                                    <input type="radio" name="arousal" id="cb13" value=3 autocomplete="off">
+                                    <label for="cb13" class="justify-content-center text-center">
+                                        <img src="../../static/img/Arousal_2.svg" alt="arousal3">
+                                        <p>3</p>
+                                    </label>
+                                </li>
+                                <li>
+                                    <input type="radio" name="arousal" id="cb14" value=4 autocomplete="off">
+                                    <label for="cb14" class="justify-content-center text-center">
+                                        <img src="../../static/img/empty.svg" alt="arousal4">
+                                        <p>4</p>
+                                    </label>
+                                </li>
+                                <li>
+                                    <input type="radio" name="arousal" id="cb15" value=5 autocomplete="off">
+                                    <label for="cb15" class="justify-content-center text-center">
+                                        <img src="../../static/img/Arousal_3.svg" alt="arousal5">
+                                        <p>5</p>
+                                    </label>
+                                </li>
+                                <li>
+                                    <input type="radio" name="arousal" id="cb16" value=6 autocomplete="off">
+                                    <label for="cb16" class="justify-content-center text-center">
+                                        <img src="../../static/img/empty.svg" alt="arousal6">
+                                        <p>6</p>
+                                    </label>
+                                </li>
+                                <li>
+                                    <input type="radio" name="arousal" id="cb17" value=7 autocomplete="off">
+                                    <label for="cb17" class="justify-content-center text-center">
+                                        <img src="../../static/img/Arousal_4.svg" alt="arousal7">
+                                        <p>7</p>
+                                    </label>
+                                </li>
+                                <li>
+                                    <input type="radio" name="arousal" id="cb18" value=8 autocomplete="off">
+                                    <label for="cb18" class="justify-content-center text-center">
+                                        <img src="../../static/img/empty.svg" alt="arousal8">
+                                        <p>8</p>
+                                    </label>
+                                </li>
+                                <li>
+                                    <p class="text-center">각성한 상태</p>
+                                    <input type="radio" name="arousal" id="cb19" value=9 autocomplete="off">
+                                    <label for="cb19" class="justify-content-center text-center">
+                                        <img src="../../static/img/Arousal_5.svg" alt="arousal9">
+                                        <p>9</p>
+                                    </label>
+                                </li>
+                            </ul>
+                        </div>
+                        <h1 class="text-black text-center">Dominance</h1>
+                        <h5 class="text-black text-center">위 영상을 보고 얼마나 무력감을 느꼈는지 선택해주세요.</h5>
+                        <div class="d-flex justify-content-center">
+                            <ul>
+                                <li>
+                                    <p class="text-right">무력감을 느낌</p>
+                                    <input type="radio" name="dominance" id="cb21" value=1 autocomplete="off">
+                                    <label for="cb21" class="justify-content-center text-center">
+                                        <img src="../../static/img/Dominance_1.svg" alt="dominance1">
+                                        <p>1</p>
+                                    </label>
+                                </li>
+                                <li>
+                                    <input type="radio" name="dominance" id="cb22" value=2 autocomplete="off">
+                                    <label for="cb22" class="justify-content-center text-center">
+                                        <img src="../../static/img/empty.svg" alt="dominance2">
+                                        <p>2</p>
+                                    </label>
+                                </li>
+                                <li>
+                                    <input type="radio" name="dominance" id="cb23" value=3 autocomplete="off">
+                                    <label for="cb23" class="justify-content-center text-center">
+                                        <img src="../../static/img/Dominance_2.svg" alt="dominance3">
+                                        <p>3</p>
+                                    </label>
+                                </li>
+                                <li>
+                                    <input type="radio" name="dominance" id="cb24" value=4 autocomplete="off">
+                                    <label for="cb24" class="justify-content-center text-center">
+                                        <img src="../../static/img/empty.svg" alt="dominance4">
+                                        <p>4</p>
+                                    </label>
+                                </li>
+                                <li>
+                                    <input type="radio" name="dominance" id="cb25" value=5 autocomplete="off">
+                                    <label for="cb25" class="justify-content-center text-center">
+                                        <img src="../../static/img/Dominance_3.svg" alt="dominance5">
+                                        <p>5</p>
+                                    </label>
+                                </li>
+                                <li>
+                                    <input type="radio" name="dominance" id="cb26" value=6 autocomplete="off">
+                                    <label for="cb26" class="justify-content-center text-center">
+                                        <img src="../../static/img/empty.svg" alt="dominance6">
+                                        <p>6</p>
+                                    </label>
+                                </li>
+                                <li>
+                                    <input type="radio" name="dominance" id="cb27" value=7 autocomplete="off">
+                                    <label for="cb27" class="justify-content-center text-center">
+                                        <img src="../../static/img/Dominance_4.svg" alt="dominance7">
+                                        <p>7</p>
+                                    </label>
+                                </li>
+                                <li>
+                                    <input type="radio" name="dominance" id="cb28" value=8 autocomplete="off">
+                                    <label for="cb28" class="justify-content-center text-center">
+                                        <img src="../../static/img/empty.svg" alt="dominance8">
+                                        <p>8</p>
 
-                            </label>
-                        </li>
-                        <li>
-                            <input type="radio" name="dominance" id="cb29" value=9>
-                            <label for="cb29" class="justify-content-center text-center">
-                                <img src="../../static/img/Dominance_5.svg" alt="dominance9">
-                            </label>
-                        </li>
-                    </ul>
-                </div>
-                <h1 class="text-black text-center">Liking</h1>
-                <div class="d-flex justify-content-center">
-                    <ul>
-                        <li>
-                            <input type="radio" name="liking" id="cb31" value=1>
-                            <label for="cb31" class="justify-content-center text-center">
-                                <img src="../../static/img/Liking.svg" alt="liking1">
-                                <p>완전 좋음</p>
-                                <p></p>
-                            </label>
-                        </li>
-                        <li>
-                            <input type="radio" name="liking" id="cb32" value=2>
-                            <label for="cb32" class="justify-content-center text-center">
-                                <img src="../../static/img/empty.svg" alt="liking2">
-                                <p>좋음</p>
-                            </label>
-                        </li>
-                        <li>
-                            <input type="radio" name="liking" id="cb33" value=3>
-                            <label for="cb33" class="justify-content-center text-center">
-                                <img src="../../static/img/Neutral.svg" alt="liking3">
-                                <p>평범함</p>
-                            </label>
-                        </li>
-                        <li>
-                            <input type="radio" name="liking" id="cb34" value=4>
-                            <label for="cb34" class="justify-content-center text-center">
-                                <img src="../../static/img/empty.svg" alt="liking4">
-                                <p>안좋음</p>
-                            </label>
-                        </li>
-                        <li>
-                            <input type="radio" name="liking" id="cb35" value=5>
-                            <label for="cb35" class="justify-content-center text-center">
-                                <img src="../../static/img/Unliking.svg" alt="liking5">
-                                <p>완전 안좋음</p>
-                            </label>
-                        </li>
-
-                    </ul>
-                </div>
-                 <h1 class="text-black text-center">Familiarity</h1>
-                <div class="d-flex justify-content-center">
-                    <ul>
-                        <li>
-                            <input type="radio" name="familiarity" id="cb41" value=1>
-                            <label for="cb41" class="justify-content-center text-center">
-                                <img src="../../static/img/empty.svg" alt="familiarity1">
-                                <p>매일 봄</p>
-                            </label>
-                        </li>
-                        <li>
-                            <input type="radio" name="familiarity" id="cb42" value=2>
-                            <label for="cb42" class="justify-content-center text-center">
-                                <img src="../../static/img/empty.svg" alt="familiarity2">
-                                <p>자주 봄</p>
-                            </label>
-                        </li>
-                        <li>
-                            <input type="radio" name="familiarity" id="cb43" value=3>
-                            <label for="cb43" class="justify-content-center text-center">
-                                <img src="../../static/img/empty.svg" alt="familiarity3">
-                                <p>적당히 봄</p>
-                            </label>
-                        </li>
-                        <li>
-                            <input type="radio" name="familiarity" id="cb44" value=4>
-                            <label for="cb44" class="justify-content-center text-center">
-                                <img src="../../static/img/empty.svg" alt="familiarity4">
-                                <p>거의 안봄</p>
-                            </label>
-                        </li>
-                        <li>
-                            <input type="radio" name="familiarity" id="cb45" value=5>
-                            <label for="cb45" class="justify-content-center text-center">
-                                <img src="../../static/img/empty.svg" alt="familiarity5">
-                                <p>처음봄</p>
-                            </label>
-                        </li>
-                    </ul>
-                </div>
-                <h1 class="text-black text-center">Emotion</h1>
-                <div class="d-flex justify-content-center">
-                    <ul>
-                        <li>
-                            <input type="radio" name="emotion" id="cb51" value="excited">
-                            <label for="cb51" class="justify-content-center text-center">
-                                <img src="../../static/img/Excited.svg" alt="excited">
-                                <p>Excited</p>
-                            </label>
-                        </li>
-                        <li>
-                            <input type="radio" name="emotion" id="cb52" value="joy">
-                            <label for="cb52" class="justify-content-center text-center">
-                                <img src="../../static/img/Joy.svg" alt="joy">
-                                <p>Joy</p>
-                            </label>
-                        </li>
-                        <li>
-                            <input type="radio" name="emotion" id="cb53" value="calm">
-                            <label for="cb53" class="justify-content-center text-center">
-                                <img src="../../static/img/Calm.svg" alt="calm">
-                                <p>Calm</p>
-                            </label>
-                        </li>
-                        <li>
-                            <input type="radio" name="emotion" id="cb54" value="sad">
-                            <label for="cb54" class="justify-content-center text-center">
-                                <img src="../../static/img/Sad.svg" alt="sad">
-                                <p>Sad</p>
-                            </label>
-                        </li>
-                        <li>
-                            <input type="radio" name="emotion" id="cb55" value="fearful">
-                            <label for="cb55" class="justify-content-center text-center">
-                                <img src="../../static/img/Fearful.svg" alt="fearful">
-                                <p>Fearful</p>
-                            </label>
-                        </li>
-                        <li>
-                            <input type="radio" name="emotion" id="cb56" value="angry">
-                            <label for="cb56" class="justify-content-center text-center">
-                                <img src="../../static/img/Angry.svg" alt="fearful">
-                                <p>Angry</p>
-                            </label>
-                        </li>
-                    </ul>
-                </div>
-                <input type="submit" value="다음으로" class="btn btn-primary btn-user btn-block">
-            </form>
+                                    </label>
+                                </li>
+                                <li>
+                                    <p class="text-right">무력감을 안느낌</p>
+                                    <input type="radio" name="dominance" id="cb29" value=9 autocomplete="off">
+                                    <label for="cb29" class="justify-content-center text-center">
+                                        <img src="../../static/img/Dominance_5.svg" alt="dominance9">
+                                        <p>9</p>
+                                    </label>
+                                </li>
+                            </ul>
+                        </div>
+                        <h1 class="text-black text-center">Liking</h1>
+                        <h5 class="text-black text-center">위 영상이 얼마나 좋았는지 선택해주세요.</h5>
+                        <div class="d-flex justify-content-center">
+                            <ul>
+                                <li>
+                                    <p class="text-center">안좋음</p>
+                                    <input type="radio" name="liking" id="cb31" value=1 autocomplete="off">
+                                    <label for="cb31" class="justify-content-center text-center">
+                                        <img src="../../static/img/Unliking.svg" alt="liking1">
+                                        <p>1</p>
+                                    </label>
+                                </li>
+                                <li>
+                                    <input type="radio" name="liking" id="cb32" value=2 autocomplete="off">
+                                    <label for="cb32" class="justify-content-center text-center">
+                                        <img src="../../static/img/empty.svg" alt="liking2">
+                                        <p>2</p>
+                                    </label>
+                                </li>
+                                <li>
+                                    <input type="radio" name="liking" id="cb33" value=3 autocomplete="off">
+                                    <label for="cb33" class="justify-content-center text-center">
+                                        <img src="../../static/img/Semi_unliking.svg" alt="liking3">
+                                        <p>3</p>
+                                    </label>
+                                </li>
+                                <li>
+                                    <input type="radio" name="liking" id="cb34" value=4 autocomplete="off">
+                                    <label for="cb34" class="justify-content-center text-center">
+                                        <img src="../../static/img/empty.svg" alt="liking4">
+                                        <p>4</p>
+                                    </label>
+                                </li>
+                                <li>
+                                    <input type="radio" name="liking" id="cb35" value=5 autocomplete="off">
+                                    <label for="cb35" class="justify-content-center text-center">
+                                        <img src="../../static/img/Neutral.svg" alt="liking5">
+                                        <p>5</p>
+                                    </label>
+                                </li>
+                                <li>
+                                    <input type="radio" name="liking" id="cb36" value=6 autocomplete="off">
+                                    <label for="cb36" class="justify-content-center text-center">
+                                        <img src="../../static/img/empty.svg" alt="liking6">
+                                        <p>6</p>
+                                    </label>
+                                </li>
+                                <li>
+                                    <input type="radio" name="liking" id="cb37" value=7 autocomplete="off">
+                                    <label for="cb37" class="justify-content-center text-center">
+                                        <img src="../../static/img/Semi_liking.svg" alt="liking7">
+                                        <p>7</p>
+                                    </label>
+                                </li>
+                                <li>
+                                    <input type="radio" name="liking" id="cb38" value=8 autocomplete="off">
+                                    <label for="cb38" class="justify-content-center text-center">
+                                        <img src="../../static/img/empty.svg" alt="liking8">
+                                        <p>8</p>
+                                    </label>
+                                </li>
+                                <li>
+                                    <p class="text-center">좋음</p>
+                                    <input type="radio" name="liking" id="cb39" value=9 autocomplete="off">
+                                    <label for="cb39" class="justify-content-center text-center">
+                                        <img src="../../static/img/Liking.svg" alt="liking9">
+                                        <p>9</p>
+                                    </label>
+                                </li>
+                            </ul>
+                        </div>
+                         <h1 class="text-black text-center">Familiarity</h1>
+                        <h5 class="text-black text-center">위 영상을 얼마나 자주 봤는지 선택해주세요.</h5>
+                        <div class="d-flex justify-content-center">
+                            <ul>
+                                <li>
+                                    <p class="text-center">처음 봄</p>
+                                    <input type="radio" name="familiarity" id="cb41" value=1 autocomplete="off">
+                                    <label for="cb41" class="justify-content-center text-center">
+                                        <img src="../../static/img/fm1.png" alt="familiarity1">
+                                        <p>1</p>
+                                    </label>
+                                </li>
+                                <li>
+                                    <p class="text-center">달 1회 봄</p>
+                                    <input type="radio" name="familiarity" id="cb42" value=2 autocomplete="off">
+                                    <label for="cb42" class="justify-content-center text-center">
+                                        <img src="../../static/img/empty.svg" alt="familiarity2">
+                                        <p>2</p>
+                                    </label>
+                                </li>
+                                <li>
+                                    <p class="text-center">주 1회 봄</p>
+                                    <input type="radio" name="familiarity" id="cb43" value=3 autocomplete="off">
+                                    <label for="cb43" class="justify-content-center text-center">
+                                        <img src="../../static/img/empty.svg" alt="familiarity3">
+                                        <p>3</p>
+                                    </label>
+                                </li>
+                                <li>
+                                    <p class="text-center">주 3~4회 봄</p>
+                                    <input type="radio" name="familiarity" id="cb44" value=4 autocomplete="off">
+                                    <label for="cb44" class="justify-content-center text-center">
+                                        <img src="../../static/img/empty.svg" alt="familiarity4">
+                                        <p>4</p>
+                                    </label>
+                                </li>
+                                <li>
+                                    <p class="text-center">주 3~4회 이상 봄</p>
+                                    <input type="radio" name="familiarity" id="cb45" value=5 autocomplete="off">
+                                    <label for="cb45" class="justify-content-center text-center">
+                                        <img src="../../static/img/fm2.png" alt="familiarity5">
+                                        <p>5</p>
+                                    </label>
+                                </li>
+                            </ul>
+                        </div>
+                        <h1 class="text-black text-center">Emotion</h1>
+                        <h5 class="text-black text-center">위 영상을 보고 어떤 감정이 들었는지 선택해주세요.</h5>
+                        <div class="d-flex justify-content-center">
+                            <ul>
+                                <li>
+                                    <input type="radio" name="emotion" id="cb51" value="excited" autocomplete="off">
+                                    <label for="cb51" class="justify-content-center text-center">
+                                        <img src="../../static/img/Excited.svg" alt="excited">
+                                        <p>흥분</p>
+                                    </label>
+                                </li>
+                                <li>
+                                    <input type="radio" name="emotion" id="cb53" value="calm" autocomplete="off">
+                                    <label for="cb53" class="justify-content-center text-center">
+                                        <img src="../../static/img/Calm.svg" alt="calm">
+                                        <p>차분함</p>
+                                    </label>
+                                </li>
+                                <li>
+                                    <input type="radio" name="emotion" id="cb56" value="angry" autocomplete="off">
+                                    <label for="cb56" class="justify-content-center text-center">
+                                        <img src="../../static/img/Angry.svg" alt="angry ">
+                                        <p>화남</p>
+                                    </label>
+                                </li>
+                                <br>
+                                <li>
+                                    <input type="radio" name="emotion" id="cb55" value="fearful" autocomplete="off">
+                                    <label for="cb55" class="justify-content-center text-center">
+                                        <img src="../../static/img/Fearful.svg" alt="fearful">
+                                        <p>두려움</p>
+                                    </label>
+                                </li>
+                                <li>
+                                    <input type="radio" name="emotion" id="cb52" value="joy" autocomplete="off">
+                                    <label for="cb52" class="justify-content-center text-center">
+                                        <img src="../../static/img/Joy.svg" alt="joy">
+                                        <p>즐거움</p>
+                                    </label>
+                                </li>
+                                <li>
+                                    <input type="radio" name="emotion" id="cb54" value="sad" autocomplete="off">
+                                    <label for="cb54" class="justify-content-center text-center">
+                                        <img src="../../static/img/Sad.svg" alt="sad">
+                                        <p>슬픔</p>
+                                    </label>
+                                </li>
+                            </ul>
+                        </div>
+                        <input type="submit" value="다음으로" class="btn btn-primary btn-user btn-block">
+                    </form>
                 <!-- /.container-fluid -->
-
+                </div>
             </div>
             <!-- End of Main Content -->
             <!-- Footer -->
@@ -495,7 +571,26 @@
 
     <!-- Custom scripts for all pages-->
     <script src="static/js/sb-admin-2.min.js"></script>
+    <script>
+        $(window).on("load",function(){
+            const set_btn_loc = document.getElementById("video-error-reset").offsetTop;
+            window.scrollTo({top:set_btn_loc, behavior:'smooth'})
+            //윈도우 로드 시 비디오 플레이
+            $("#video").get(0).play();
 
+            //작동하는지 콘솔창에서 확인
+            console.log("test");
+        })
+
+
+
+        setInterval(function () {
+            if ($("#video").prop("ended")) {
+                const sam_formDiv = document.getElementById("sam-formDiv");
+                sam_formDiv.style.display = '';
+            }
+        }, 200);
+</script>
 </body>
 
 </html>

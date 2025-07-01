@@ -113,7 +113,7 @@
                                             </div>
                                             <div class="row no-gutters align-items-center">
                                                 <div class="col-auto">
-                                                    <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">{{ (100 / 108) * session['success_len'] }}%</div>
+                                                    <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">{{ ((100 / 108) * session['success_len'])|round(2) }}%</div>
                                                 </div>
                                                 <div class="col">
                                                     <div class="progress progress-sm mr-2">
@@ -132,13 +132,16 @@
                             </div>
                         </div>
                         <div>
-                            {{ session['success_len'] }}
+                            {% if session['success_len'] >= 108 %}
+                                <h1>평가가 완료 되었습니다.</h1>
+                                {% else %}
                             <a href="{{ url_for('samtest') }}" class="btn btn-primary btn-icon-split btn-lg">
                                 <span class="icon text-white-50">
                                     <i class="fas fa-flag"></i>
                                 </span>
                                 <span class="text">SAM Test 하러가기</span>
                             </a>
+                                {% endif %}
                         </div>
                     </div>
                 <!-- /.container-fluid -->

@@ -11,7 +11,7 @@ class UserDAO:
         self.cursor = None
 
     def connect(self):
-        self.conn = pymysql.connect(host=config.DATABASE['HOST'], user=config.DATABASE['USER'], passwd=config.DATABASE['PASSWORD'], db=config.DATABASE['DATABASE'], charset='utf8')
+        self.conn = pymysql.connect(host=config.DATABASE['HOST'],port=config.DATABASE['PORT'], user=config.DATABASE['USER'], passwd=config.DATABASE['PASSWORD'], db=config.DATABASE['DATABASE'], charset='utf8')
         self.cursor = self.conn.cursor()
 
 
@@ -30,9 +30,9 @@ class UserDAO:
                 return False
 
 
-    def signup(self, userid, password, email, name, age, phone):
+    def signup(self, userid, password, email, name, age, phone, gender):
         self.connect()
-        vals = (userid, password, email, name, age, phone, 0)
+        vals = (userid, password, email, name, age, phone, 0, gender)
         self.cursor.execute(sql.signup_sql(), vals)
         self.conn.commit()
         self.conn.close()
@@ -94,20 +94,23 @@ class UserDAO:
                     remove_path.append(all_name)
         path = list(set(row_all) - set(remove_path))
         success_len = len(row_success)
+        if success_len >= 108:
+            return [-1], [-1], success_len
         final_path = []
         final_video_name = []
         shuffle(path)
         for i in range(len(path)):
             final_path.append(path[i][1])
             final_video_name.append(path[i][0])
-
-        print(final_path[0])
-        print(final_video_name[0])
         return final_path[0], final_video_name[0], success_len
 
     def save_movie_assessment(self, assessment_id, userid, movie_name, valance, arousal, dominance, liking, familiarity, emotion):
         self.connect()
-        vals = (assessment_id, userid, movie_name, valance, arousal, dominance, liking, familiarity, emotion)
-        self.cursor.execute(sql.save_movie_assessment_sql(), vals)
-        self.conn.commit()
+        vals = userid
+        self.cursor.execute(sql.get_user_success_movie_sql(), vals)
+        row_success = list(self.cursor.fetchall())
+        if movie_name not in row_success:
+            vals = (assessment_id, userid, movie_name, valance, arousal, dominance, liking, familiarity, emotion, 0)
+            self.cursor.execute(sql.save_movie_assessment_sql(), vals)
+            self.conn.commit()
         self.conn.close()

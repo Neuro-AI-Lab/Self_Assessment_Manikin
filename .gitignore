@@ -3,8 +3,10 @@
 *.venv
 *__pycache__
 *security
+*sam_test
 static/Video/*
 test.py
+nohup.out
 ### Flask ###
 instance/*
 !instance/.gitignore
